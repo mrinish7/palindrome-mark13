@@ -1,15 +1,15 @@
 function reverseStr(str) {
     var listOfcharts = str.split('');
-    var reversedListOfCharts = listOfcharts.reverse();
-    var reversedStr = reversedListOfCharts.join('');
-    return reverseStr;
+    var reverseListOfCharts = listOfcharts.reverse();
+    var reversedStr = reverseListOfCharts.join('');
+    return reversedStr;
 }
 
 function isPalindrome(str) {
     var reverse = reverseStr(str);
     return str === reverse;
 }
-
+debugger
 function convertDateToStr(date) {
     var dateStr = {day: '', month: '', year: ''};
 
@@ -41,8 +41,8 @@ var yyyymmdd = dateStr.year + dateStr.month + dateStr.day;
 var ddmmyy = dateStr.day + dateStr.month + dateStr.year.slice(-2);
 var mmddyy = dateStr.month + dateStr.day + dateStr.year.slice(-2);
 var yymmdd = dateStr.year.slice(-2) + dateStr.month + dateStr.day;
-
-return [ddmmyyyy, ,mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
+    
+return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
 
 }
 
@@ -50,7 +50,7 @@ function checkPalindromeForAllDateFormats(date) {
     var listOfPlaindrome = getAllDateFormats(date);
 
     var flag = false;
-    for(var i=0; i < listOfPlaindrome; i++){
+    for(var i=0; i < listOfPlaindrome.length; i++){
         if(isPalindrome(listOfPlaindrome[i])){
             flag=true;
             break;
@@ -64,7 +64,7 @@ function isLeapYear(year) {
         return true;
     }
     if(year % 100 === 0){
-        return true;
+        return false;
     }
     if(year % 4 === 0){
         return true;
@@ -127,22 +127,22 @@ function getNextPalindromeDate(date) {
     return [ctr, nextDate];
 }
 
-const input = document.querySelector ('#bday-input');
-const checkBtn = document.querySelector ('#check-btn');
-const outputMsg = document.querySelector ('#output-box');
+var input = document.querySelector ('#bday-input');
+var checkBtn = document.querySelector ('#check-btn');
+var outputMsg = document.querySelector ('#output-box');
 
-function clickHandler(e){
-    var bdayStr = input.value; // 2020-10-11
+function clickHandler(){
     
+    var bdayStr = input.value; 
+
     if(bdayStr !== ''){
-      var listOfDate = bdayStr.split('-'); // ['2020', '10', '11']
+      var listOfDate = bdayStr.split('-');
   
       var date = {
         day: Number(listOfDate[2]),
         month: Number(listOfDate[1]),
         year: Number(listOfDate[0])
       };
-      
       var isPalindrome = checkPalindromeForAllDateFormats(date);
   
       if(isPalindrome){
